@@ -39,7 +39,7 @@ export default {
 .address
 	display: flex
 	flex-direction: column
-	border: 0
+	border: 3px solid #768eed
 
 	div:nth-child(n + 1):not(:last-child)
 		margin-bottom: 20px
