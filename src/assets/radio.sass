@@ -1,0 +1,30 @@
+.radio
+
+	label
+		position: relative
+		display: inline-flex
+		align-items: center
+		user-select: none
+		transition-duration: 0.35s
+
+		&::before
+			content: ''
+			display: inline-block
+			width: 20px
+			height: 20px
+			margin: 0 10px
+			box-sizing: border-box
+			border-radius: 50%
+			background-color: #D6D8E7
+
+		&:hover
+			&::before
+				background-color: #A0A3BD
+
+	input
+		display: none
+
+		&:checked+label::before
+			background-color: #F7F7FC
+			border: 5px solid #5F2EEA
+			transition-duration: 0.20s

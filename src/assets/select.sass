@@ -1,0 +1,59 @@
+.select
+	position: relative
+	width: 100%
+	max-width: 500px
+	min-width: 180px
+	height: 50px
+	padding: 15px 15px 0
+	// TODO настроить стили для *outline* что бы было видно только для табов или читалок
+	box-sizing: border-box
+	background-color: #768eed
+	border: 2px solid white
+	border-radius: 12px
+	outline: none
+	font-size: 16px
+	color: white
+	letter-spacing: 0.75px
+	user-select: none
+
+	&::before
+		content: ''
+		position: absolute
+		left: 85%
+		width: 10px
+		height: 10px
+		border-top: 3px solid white
+		border-right: 3px solid white
+		transform: rotate(45deg)
+		z-index: 1
+		transition-duration: 0.35s
+
+	&__container
+		display: flex
+		flex-direction: column
+		position: absolute
+		box-sizing: border-box
+		width: 100%
+		transform: translateY(50px) scale(0)
+		padding: 10px
+		top: 100%
+		left: 0
+		opacity: 0
+		z-index: 2
+		border-radius: 12px
+		transition: 0.35s
+		background-color: #768eed
+
+		label:not(:last-child)
+			margin-bottom: 10px
+
+	&_show
+		&::before
+			transform: rotate(135deg)
+			transition-duration: 0.35s
+
+
+		.select__container
+			transform: translateY(0)
+			opacity: 1
+			transition: transform 0.35s

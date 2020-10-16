@@ -1,0 +1,52 @@
+.field
+	position: relative
+
+	label
+		position: absolute
+		font-size: 16px
+		top: 30%
+		left: 15px
+		transition-duration: 0.35s
+		user-select: none
+
+	input
+		width: 100%
+		max-width: 500px
+		min-width: 180px
+		height: 50px
+		padding: 15px 15px 0
+		// TODO настроить стили для *outline* что бы было видно только для табов или читалок
+		box-sizing: border-box
+		background-color: #EFF0F7
+		border: 2px solid white
+		border-radius: 12px
+		outline: none
+		font-size: 16px
+		color: #14142B
+		letter-spacing: 0.75px
+
+		&_invalid
+			background-color: #FFF2F7
+			border-color: #ED2E7E
+
+		&::placeholder
+			font-size: 16px
+			color: #A0A3BD
+			letter-spacing: 0.75px
+
+		&:focus
+			border: 2px solid #14142B
+			background-color: white
+
+			&+label
+				top: 5px
+				font-size: 14px
+				transition-duration: 0.35s
+
+		&:valid+label
+			top: 5px
+			font-size: 14px
+
+		&:disabled
+			background-color: #EFF0F7
+
