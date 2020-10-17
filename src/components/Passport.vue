@@ -14,36 +14,35 @@
 					<label for="driver's-license">Водительское удостоверение</label>
 				</div>
 			</div>
+			<p class="field__warning" v-if="!typeDocument && send">Пожалуйста выберите тип документа</p>
 		</div>
-
-		<p class="field__warning" v-if="!typeDocument && send">Пожалуйста заполните форму</p>
 		<div class="passport__series field"
 				 :class="{'field_valid' : $v.series.$model, 'field_invalid' : $v.series.$error}">
 			<input type="number"  id="series" class="field" v-model="$v.series.$model">
 			<label for="series">Серия</label>
 
-			<p class="field__error" v-if="$v.series.$error">Пожалуйста заполните форму корректно</p>
+			<p class="field__error" v-if="$v.series.$error">Пожалуйста напишите серию корректно</p>
 		</div>
 		<div class="passport__number field"
 				 :class="{'field_valid' : $v.number.$model, 'field_invalid' : $v.number.$error}">
 			<input type="number"  id="number" class="field" v-model="$v.number.$model">
 			<label for="number">Номер</label>
 
-			<p class="field__error" v-if="$v.number.$error">Пожалуйста заполните форму корректно</p>
+			<p class="field__error" v-if="$v.number.$error">Пожалуйста напишите номер корректно</p>
 		</div>
 		<div class="passport__issued-by field"
 				 :class="{'field_valid' : $v.issuedBy.$model, 'field_invalid' : $v.issuedBy.$error}">
 			<input type="text"  id="issued-by" class="field" v-model="$v.issuedBy.$model">
 			<label for="issued-by">Кем выдан</label>
 
-			<p class="field__error" v-if="$v.issuedBy.$error">Пожалуйста заполните форму корректно</p>
+			<p class="field__error" v-if="$v.issuedBy.$error">Пожалуйста напишите кем выдан документ корректно</p>
 		</div>
 		<div class="passport__date-of-issue field field_valid"
 				 :class="{'field_invalid' : $v.dateOfIssue.$error}">
 			<input type="date"  id="date-of-issue" class="field" v-model="$v.dateOfIssue.$model">
 			<label for="date-of-issue">Дата выдачи</label>
 
-			<p class="field__warning" v-if="!$v.dateOfIssue.required && send">Пожалуйста заполните форму</p>
+			<p class="field__warning" v-if="!$v.dateOfIssue.required && send">Пожалуйста напишите дату выдачи документа</p>
 		</div>
 	</fieldset>
 </template>
@@ -81,7 +80,7 @@ export default {
 			minLength: minLength(3),
 		},
 		issuedBy: {
-			alpha,
+			alpha: val => /^[а-яё]*$/i.test(val),
 			minLength: minLength(3),
 		},
 		dateOfIssue: {

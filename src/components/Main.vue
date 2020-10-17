@@ -6,39 +6,39 @@
 			<input type="text" id="surname" v-model.trim="$v.surname.$model">
 			<label for="surname">Фамилия</label>
 
-			<p class="field__error" v-if="$v.surname.$error">Пожалуйста заполните форму корректно</p>
-			<p class="field__warning" v-if="!$v.surname.required && send">Пожалуйста заполните форму</p>
+			<p class="field__error" v-if="$v.surname.$error">Пожалуйста напишите корректное имя</p>
+			<p class="field__warning" v-if="!$v.surname.required && send">Пожалуйста напишите имя</p>
 		</div>
 		<div class="main__name field"
 				 :class="{'field_valid' : $v.name.required, 'field_invalid' : $v.name.$error}">
 			<input type="text" id="name" v-model.trim="$v.name.$model">
 			<label for="name">Имя</label>
 
-			<p class="field__error" v-if="$v.name.$error">Пожалуйста заполните форму корректно</p>
-			<p class="field__warning" v-if="!$v.name.required && send">Пожалуйста заполните форму</p>
+			<p class="field__error" v-if="$v.name.$error">Пожалуйста напишите корректную фамилию</p>
+			<p class="field__warning" v-if="!$v.name.required && send">Пожалуйста напишите фамилию</p>
 		</div>
 		<div class="main__middle-name field"
 				 :class="{'field_valid' : $v.middleName.required, 'field_invalid' : $v.middleName.$error}">
 			<input type="text" id="middle-name" v-model.trim="$v.middleName.$model">
 			<label for="middle-name">Отчество</label>
 
-			<p class="field__error" v-if="$v.middleName.$error">Пожалуйста заполните форму корректно</p>
-			<p class="field__warning" v-if="!$v.middleName.required && send">Пожалуйста заполните форму</p>
+			<p class="field__error" v-if="$v.middleName.$error">Пожалуйста напишите корректное отчество</p>
+			<p class="field__warning" v-if="!$v.middleName.required && send">Пожалуйста напишите отчество</p>
 		</div>
 		<div class="main__birthday field field_valid"
 				 :class="{'field_invalid' : $v.birthday.$error}">
 			<input type="date" id="birthday" v-model.trim="$v.birthday.$model">
 			<label for="birthday">Дата рождения</label>
 
-			<p class="field__warning" v-if="!$v.birthday.required && send">Пожалуйста заполните форму</p>
+			<p class="field__warning" v-if="!$v.birthday.required && send">Пожалуйста напишите дату рождения</p>
 		</div>
 		<div class="main__phone field"
 				 :class="{'field_valid' : $v.phone.required, 'field_invalid' : $v.phone.$error}">
 			<input type="tel" id="phone" v-model.trim="$v.phone.$model">
 			<label for="phone">Номер телефона</label>
 
-			<p class="field__error" v-if="$v.phone.$error">Пожалуйста заполните форму корректно</p>
-			<p class="field__warning" v-if="!$v.phone.required && send">Пожалуйста заполните форму</p>
+			<p class="field__error" v-if="$v.phone.$error">Пожалуйста напишите корректный номер телефона</p>
+			<p class="field__warning" v-if="!$v.phone.required && send">Пожалуйста напишите номер телефона</p>
 		</div>
 		<div class="main__gender radio">
 			<input type="radio" id="male" name="gender" value="male">
@@ -65,7 +65,7 @@
 					<label for="oms">ОМС</label>
 				</div>
 			</div>
-			<p class="select__warning" v-if="(!$v.clientGroup.$model.vip && !$v.clientGroup.$model.problem && !$v.clientGroup.$model.oms) && send">Пожалуйста заполните форму</p>
+			<p class="select__warning" v-if="(!$v.clientGroup.$model.vip && !$v.clientGroup.$model.problem && !$v.clientGroup.$model.oms) && send">Пожалуйста выберите группу</p>
 		</div>
 		<div class="main__therapist-container select__container"
 				 :class="{'select__container_show': showTherapist}"
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import {required, minValue, minLength, maxLength,alpha, numeric} from 'vuelidate/lib/validators'
+import {required, minLength, maxLength,alpha, numeric} from 'vuelidate/lib/validators'
 
 export default {
 	name: "Main",
@@ -115,11 +115,11 @@ export default {
 	validations: {
 		surname: {
 			required,
-			alpha,
+			alpha: val => /^[а-яё]*$/i.test(val),
 			minLength: minLength(3)
 		},
-		name : { required, alpha, minLength: minLength(3) },
-		middleName : { required, alpha, minLength: minLength(3) },
+		name : { required, alpha: val => /^[а-яё]*$/i.test(val), minLength: minLength(3) },
+		middleName : { required, alpha: val => /^[а-яё]*$/i.test(val), minLength: minLength(3) },
 		birthday: {
 			required,
 		},
