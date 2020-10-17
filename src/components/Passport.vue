@@ -1,9 +1,17 @@
 <template>
 	<fieldset class="passport">
 		<legend class="passport__heading">Паспортные данные</legend>
-		<div class="passport__type-document field">
-			<input type="text"  id="type-document" class="field" required>
-			<label for="type-document">Тип документа</label>
+		<div class="main__type-document select" :class="{'select_show': showTypeDocument}" @click="showTypeDocument = !showTypeDocument" > Лечащий врач
+			<div class="passport__type-document-container radio select__container">
+				<input type="radio" id="passport" name="type-document" value="passport">
+				<label for="passport">Паспорт</label>
+
+				<input type="radio" id="birth-certificate" name="type-document" value="birth-certificate">
+				<label for="birth-certificate">Свидетельство о рождении</label>
+
+				<input type="radio" id="driver's-license" name="type-document" value="driver's-license">
+				<label for="driver's-license">Водительское удостоверение</label>
+			</div>
 		</div>
 		<div class="passport__series field">
 			<input type="number"  id="series" class="field" required>
@@ -27,7 +35,11 @@
 <script>
 export default {
   name: "Passport",
-
+	data() {
+		return {
+			showTypeDocument: false
+		}
+	},
 }
 </script>
 

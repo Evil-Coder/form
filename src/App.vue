@@ -32,7 +32,6 @@ form
 	grid-gap: 10px
 
 	@media (max-width: 660px)
-		// TODO Подключить красивые шрифты
 		grid-template-columns: 1fr
 
 </style>
