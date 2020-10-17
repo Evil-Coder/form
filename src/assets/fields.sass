@@ -1,5 +1,5 @@
 @import '~./fonts.sass'
-// TODO задать стили когда введен текст - название наверху
+
 .field
 	position: relative
 
@@ -28,9 +28,6 @@
 		letter-spacing: 0.75px
 		font-family: Mulish-Medium, serif
 
-		&_invalid
-			background-color: #FFF2F7
-			border-color: #ED2E7E
 
 		&:focus
 			border: 2px solid #14142B
@@ -41,10 +38,13 @@
 				font-size: 14px
 				transition-duration: 0.35s
 
-		&:valid+label
-			top: 5px
-			font-size: 14px
-
 		&:disabled
 			background-color: #EFF0F7
 
+	&_valid label
+		top: 5px
+		font-size: 14px
+
+	&_invalid input
+		background-color: #FFF2F7
+		border-color: #ED2E7E
