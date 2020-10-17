@@ -72,6 +72,7 @@ export default {
 </script>
 
 <style lang="sass">
+
 .main
 	display: flex
 	flex-direction: column

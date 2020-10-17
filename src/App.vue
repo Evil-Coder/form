@@ -32,7 +32,6 @@ form
 	grid-gap: 10px
 
 	@media (max-width: 660px)
-		// TODO Сделать нормальную резиновую сетку (на маленьких экранах не по середине)
 		// TODO Подключить красивые шрифты
 		grid-template-columns: 1fr
 
