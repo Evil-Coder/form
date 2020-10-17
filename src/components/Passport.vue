@@ -38,7 +38,7 @@
 			<p class="field__error" v-if="$v.issuedBy.$error">Пожалуйста напишите кем выдан документ корректно</p>
 		</div>
 		<div class="passport__date-of-issue field field_valid"
-				 :class="{'field_invalid' : $v.dateOfIssue.$error}">
+				 :class="{'field_invalid' : $v.dateOfIssue.$error || !$v.dateOfIssue.required && send}">
 			<input type="date"  id="date-of-issue" class="field" v-model="$v.dateOfIssue.$model">
 			<label for="date-of-issue">Дата выдачи</label>
 

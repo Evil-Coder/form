@@ -2,7 +2,7 @@
 	<fieldset class="main">
 		<legend class="main__heading">Основные данные</legend>
 		<div class="main__surname field"
-				 :class="{'field_valid' : $v.surname.required, 'field_invalid' : $v.surname.$error}">
+				 :class="{'field_valid' : $v.surname.required, 'field_invalid' : $v.surname.$error || !$v.surname.required && send}">
 			<input type="text" id="surname" v-model.trim="$v.surname.$model">
 			<label for="surname">Фамилия</label>
 
@@ -10,7 +10,7 @@
 			<p class="field__warning" v-if="!$v.surname.required && send">Пожалуйста напишите имя</p>
 		</div>
 		<div class="main__name field"
-				 :class="{'field_valid' : $v.name.required, 'field_invalid' : $v.name.$error}">
+				 :class="{'field_valid' : $v.name.required, 'field_invalid' : $v.name.$error || !$v.name.required && send}">
 			<input type="text" id="name" v-model.trim="$v.name.$model">
 			<label for="name">Имя</label>
 
@@ -18,7 +18,7 @@
 			<p class="field__warning" v-if="!$v.name.required && send">Пожалуйста напишите фамилию</p>
 		</div>
 		<div class="main__middle-name field"
-				 :class="{'field_valid' : $v.middleName.required, 'field_invalid' : $v.middleName.$error}">
+				 :class="{'field_valid' : $v.middleName.required, 'field_invalid' : $v.middleName.$error || !$v.middleName.required && send}">
 			<input type="text" id="middle-name" v-model.trim="$v.middleName.$model">
 			<label for="middle-name">Отчество</label>
 
@@ -26,14 +26,14 @@
 			<p class="field__warning" v-if="!$v.middleName.required && send">Пожалуйста напишите отчество</p>
 		</div>
 		<div class="main__birthday field field_valid"
-				 :class="{'field_invalid' : $v.birthday.$error}">
+				 :class="{'field_invalid' : $v.birthday.$error || !$v.birthday.required && send}">
 			<input type="date" id="birthday" v-model.trim="$v.birthday.$model">
 			<label for="birthday">Дата рождения</label>
 
 			<p class="field__warning" v-if="!$v.birthday.required && send">Пожалуйста напишите дату рождения</p>
 		</div>
 		<div class="main__phone field"
-				 :class="{'field_valid' : $v.phone.required, 'field_invalid' : $v.phone.$error}">
+				 :class="{'field_valid' : $v.phone.required, 'field_invalid' : $v.phone.$error || !$v.phone.required && send}">
 			<input type="tel" id="phone" v-model.trim="$v.phone.$model">
 			<label for="phone">Номер телефона</label>
 
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import {required, minLength, maxLength,alpha, numeric} from 'vuelidate/lib/validators'
+import {required, minLength, maxLength, alpha, numeric} from 'vuelidate/lib/validators'
 
 export default {
 	name: "Main",
@@ -102,7 +102,7 @@ export default {
 			name: '',
 			middleName: '',
 			birthday: '',
-			phone: 7,
+			phone: '',
 			clientGroup: {vip: false, problem: false, oms: false}
 		}
 	},

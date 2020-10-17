@@ -23,7 +23,7 @@
 			<p class="field__error" v-if="$v.area.$error">Пожалуйста напишите область корректно</p>
 		</div>
 		<div class="address__city field"
-				 :class="{'field_valid' : $v.city.required, 'field_invalid' : $v.city.$error}">
+				 :class="{'field_valid' : $v.city.required, 'field_invalid' : $v.city.$error || !$v.city.required && send}">
 			<input type="text"  id="city" class="field" v-model.trim="$v.city.$model">
 			<label for="city">Город</label>
 
