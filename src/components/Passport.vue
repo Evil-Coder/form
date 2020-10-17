@@ -1,46 +1,49 @@
 <template>
 	<fieldset class="passport">
 		<legend class="passport__heading">Паспортные данные</legend>
-		<div class="main__type-document select" :class="{'select_show': showTypeDocument}" @click="showTypeDocument = !showTypeDocument" > Тип документа
-			<div class="passport__type-document-container radio select__container">
-				<input type="radio" id="passport" name="type-document" value="passport" v-model="$v.typeDocument.$model">
-				<label for="passport">Паспорт</label>
+		<div class="main__type-document select">
+			<div class="main__type-document-container select__container" :class="{'select__container_show': showTypeDocument}" @click="showTypeDocument = !showTypeDocument" > Тип документа
+				<div class="passport__type-document-elements radio select__elements">
+					<input type="radio" id="passport" name="type-document" value="passport" v-model="$v.typeDocument.$model">
+					<label for="passport">Паспорт</label>
 
-				<input type="radio" id="birth-certificate" name="type-document" value="birth-certificate" v-model="$v.typeDocument.$model">
-				<label for="birth-certificate">Свидетельство о рождении</label>
+					<input type="radio" id="birth-certificate" name="type-document" value="birth-certificate" v-model="$v.typeDocument.$model">
+					<label for="birth-certificate">Свидетельство о рождении</label>
 
-				<input type="radio" id="driver's-license" name="type-document" value="driver's-license" v-model="$v.typeDocument.$model">
-				<label for="driver's-license">Водительское удостоверение</label>
+					<input type="radio" id="driver's-license" name="type-document" value="driver's-license" v-model="$v.typeDocument.$model">
+					<label for="driver's-license">Водительское удостоверение</label>
+				</div>
 			</div>
 		</div>
-		<span v-if="!typeDocument && send">Пожалуйста заполните форму</span>
+
+		<p class="field__warning" v-if="!typeDocument && send">Пожалуйста заполните форму</p>
 		<div class="passport__series field"
 				 :class="{'field_valid' : $v.series.$model, 'field_invalid' : $v.series.$error}">
 			<input type="number"  id="series" class="field" v-model="$v.series.$model">
 			<label for="series">Серия</label>
 
-			<span v-if="$v.series.$error">Пожалуйста заполните форму корректно</span>
+			<p class="field__error" v-if="$v.series.$error">Пожалуйста заполните форму корректно</p>
 		</div>
 		<div class="passport__number field"
 				 :class="{'field_valid' : $v.number.$model, 'field_invalid' : $v.number.$error}">
 			<input type="number"  id="number" class="field" v-model="$v.number.$model">
 			<label for="number">Номер</label>
 
-			<span v-if="$v.number.$error">Пожалуйста заполните форму корректно</span>
+			<p class="field__error" v-if="$v.number.$error">Пожалуйста заполните форму корректно</p>
 		</div>
 		<div class="passport__issued-by field"
 				 :class="{'field_valid' : $v.issuedBy.$model, 'field_invalid' : $v.issuedBy.$error}">
 			<input type="text"  id="issued-by" class="field" v-model="$v.issuedBy.$model">
 			<label for="issued-by">Кем выдан</label>
 
-			<span v-if="$v.issuedBy.$error">Пожалуйста заполните форму корректно</span>
+			<p class="field__error" v-if="$v.issuedBy.$error">Пожалуйста заполните форму корректно</p>
 		</div>
 		<div class="passport__date-of-issue field field_valid"
 				 :class="{'field_invalid' : $v.dateOfIssue.$error}">
 			<input type="date"  id="date-of-issue" class="field" v-model="$v.dateOfIssue.$model">
 			<label for="date-of-issue">Дата выдачи</label>
 
-			<span v-if="!$v.dateOfIssue.required && send">Пожалуйста заполните форму</span>
+			<p class="field__warning" v-if="!$v.dateOfIssue.required && send">Пожалуйста заполните форму</p>
 		</div>
 	</fieldset>
 </template>

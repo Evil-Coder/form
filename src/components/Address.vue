@@ -6,43 +6,43 @@
 			<input type="number"  id="index" class="field"  v-model.trim="$v.index.$model">
 			<label for="index">Индекс</label>
 
-			<span v-if="$v.index.$error">Пожалуйста заполните форму корректно</span>
+			<p class="field__error" v-if="$v.index.$error">Пожалуйста заполните форму корректно</p>
 		</div>
 		<div class="address__country field"
 				 :class="{'field_valid' : $v.country.$model, 'field_invalid' : $v.country.$error}">
 			<input type="text"  id="country" class="field" v-model.trim="$v.country.$model">
 			<label for="country">Страна</label>
 
-			<span v-if="$v.country.$error">Пожалуйста заполните форму корректно</span>
+			<p class="field__error" v-if="$v.country.$error">Пожалуйста заполните форму корректно</p>
 		</div>
 		<div class="address__area field"
 				 :class="{'field_valid' : $v.area.$model, 'field_invalid' : $v.area.$error}">
 			<input type="text"  id="area" class="field" v-model.trim="$v.area.$model">
 			<label for="area">Область</label>
 
-			<span v-if="$v.area.$error">Пожалуйста заполните форму корректно</span>
+			<p class="field__error" v-if="$v.area.$error">Пожалуйста заполните форму корректно</p>
 		</div>
 		<div class="address__city field"
 				 :class="{'field_valid' : $v.city.required, 'field_invalid' : $v.city.$error}">
 			<input type="text"  id="city" class="field" v-model.trim="$v.city.$model">
 			<label for="city">Город</label>
 
-			<span v-if="$v.city.$error">Пожалуйста заполните форму корректно</span>
-			<span v-if="!$v.city.required && send">Пожалуйста заполните форму</span>
+			<p class="field__error" v-if="$v.city.$error">Пожалуйста заполните форму корректно</p>
+			<p class="field__warning" v-if="!$v.city.required && send">Пожалуйста заполните форму</p>
 		</div>
 		<div class="address__street field"
 				 :class="{'field_valid' : $v.street.$model, 'field_invalid' : $v.street.$error}">
 			<input type="text"  id="street" class="field" v-model.trim="$v.street.$model">
 			<label for="street">Улица</label>
 
-			<span v-if="$v.street.$error">Пожалуйста заполните форму корректно</span>
+			<p class="field__error" v-if="$v.street.$error">Пожалуйста заполните форму корректно</p>
 		</div>
 		<div class="address__house field"
 				 :class="{'field_valid' : $v.house.$model, 'field_invalid' : $v.house.$error}">
 			<input type="text"  id="house" class="field" v-model.trim="$v.house.$model">
 			<label for="house">Дом</label>
 
-			<span v-if="$v.house.$error">Пожалуйста заполните форму корректно</span>
+			<p class="field__error" v-if="$v.house.$error">Пожалуйста заполните форму корректно</p>
 		</div>
 	</fieldset>
 </template>

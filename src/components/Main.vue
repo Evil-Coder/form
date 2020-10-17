@@ -6,39 +6,39 @@
 			<input type="text" id="surname" v-model.trim="$v.surname.$model">
 			<label for="surname">Фамилия</label>
 
-			<span v-if="$v.surname.$error">Пожалуйста заполните форму корректно</span>
-			<span v-if="!$v.surname.required && send">Пожалуйста заполните форму</span>
+			<p class="field__error" v-if="$v.surname.$error">Пожалуйста заполните форму корректно</p>
+			<p class="field__warning" v-if="!$v.surname.required && send">Пожалуйста заполните форму</p>
 		</div>
 		<div class="main__name field"
 				 :class="{'field_valid' : $v.name.required, 'field_invalid' : $v.name.$error}">
 			<input type="text" id="name" v-model.trim="$v.name.$model">
 			<label for="name">Имя</label>
 
-			<span v-if="$v.name.$error">Пожалуйста заполните форму корректно</span>
-			<span v-if="!$v.name.required && send">Пожалуйста заполните форму</span>
+			<p class="field__error" v-if="$v.name.$error">Пожалуйста заполните форму корректно</p>
+			<p class="field__warning" v-if="!$v.name.required && send">Пожалуйста заполните форму</p>
 		</div>
 		<div class="main__middle-name field"
 				 :class="{'field_valid' : $v.middleName.required, 'field_invalid' : $v.middleName.$error}">
 			<input type="text" id="middle-name" v-model.trim="$v.middleName.$model">
 			<label for="middle-name">Отчество</label>
 
-			<span v-if="$v.middleName.$error">Пожалуйста заполните форму корректно</span>
-			<span v-if="!$v.middleName.required && send">Пожалуйста заполните форму</span>
+			<p class="field__error" v-if="$v.middleName.$error">Пожалуйста заполните форму корректно</p>
+			<p class="field__warning" v-if="!$v.middleName.required && send">Пожалуйста заполните форму</p>
 		</div>
 		<div class="main__birthday field field_valid"
 				 :class="{'field_invalid' : $v.birthday.$error}">
 			<input type="date" id="birthday" v-model.trim="$v.birthday.$model">
 			<label for="birthday">Дата рождения</label>
 
-			<span v-if="!$v.birthday.required && send">Пожалуйста заполните форму</span>
+			<p class="field__warning" v-if="!$v.birthday.required && send">Пожалуйста заполните форму</p>
 		</div>
 		<div class="main__phone field"
 				 :class="{'field_valid' : $v.phone.required, 'field_invalid' : $v.phone.$error}">
 			<input type="tel" id="phone" v-model.trim="$v.phone.$model">
 			<label for="phone">Номер телефона</label>
 
-			<span v-if="$v.phone.$error">Пожалуйста заполните форму корректно</span>
-			<span v-if="!$v.phone.required && send">Пожалуйста заполните форму</span>
+			<p class="field__error" v-if="$v.phone.$error">Пожалуйста заполните форму корректно</p>
+			<p class="field__warning" v-if="!$v.phone.required && send">Пожалуйста заполните форму</p>
 		</div>
 		<div class="main__gender radio">
 			<input type="radio" id="male" name="gender" value="male">
@@ -47,29 +47,30 @@
 			<input type="radio" id="female" name="gender" value="female">
 			<label for="female">Женщина</label>
 		</div>
-		<div class="main__client-group select"
-				 :class="{'select_show': showClientGroup}"
-				 @click="showClientGroup = !showClientGroup"> Группа клиентов
-			<div class="main__client-group-container checkbox select__container">
-				<input type="checkbox" id="vip" name="client-group" value="vip"
-							 v-model="$v.clientGroup.vip.$model">
-				<label for="vip">VIP</label>
+		<div class="main__client-group select" >
+			<div class="main__client-group-container select__container"
+					 :class="{'select__container_show': showClientGroup}"
+					 @click="showClientGroup = !showClientGroup"> Группа клиентов
+				<div class="main__client-group-elements checkbox select__elements">
+					<input type="checkbox" id="vip" name="client-group" value="vip"
+								 v-model="$v.clientGroup.vip.$model">
+					<label for="vip">VIP</label>
 
-				<input type="checkbox" id="problem" name="client-group" value="problem"
-							 v-model="$v.clientGroup.problem.$model">
-				<label for="problem">Проблемные</label>
+					<input type="checkbox" id="problem" name="client-group" value="problem"
+								 v-model="$v.clientGroup.problem.$model">
+					<label for="problem">Проблемные</label>
 
-				<input type="checkbox" id="oms" name="client-group" value="oms"
-							 v-model="$v.clientGroup.oms.$model">
-				<label for="oms">ОМС</label>
+					<input type="checkbox" id="oms" name="client-group" value="oms"
+								 v-model="$v.clientGroup.oms.$model">
+					<label for="oms">ОМС</label>
+				</div>
 			</div>
+			<p class="select__warning" v-if="(!$v.clientGroup.$model.vip && !$v.clientGroup.$model.problem && !$v.clientGroup.$model.oms) && send">Пожалуйста заполните форму</p>
 		</div>
-		<span v-if="(!$v.clientGroup.$model.vip && !$v.clientGroup.$model.problem && !$v.clientGroup.$model.oms) && send">Пожалуйста заполните форму</span>
-		<div class="main__therapist select"
-				 :class="{'select_show': showTherapist}"
-				 @click="showTherapist = !showTherapist">
-			Лечащий врач
-			<div class="main__therapist-container radio select__container">
+		<div class="main__therapist-container select__container"
+				 :class="{'select__container_show': showTherapist}"
+				 @click="showTherapist = !showTherapist"> Лечащий врач
+			<div class="main__therapist-elements radio select__elements">
 				<input type="radio" id="ivanov" name="therapist" value="ivanov">
 				<label for="ivanov">Иванов</label>
 
@@ -147,7 +148,5 @@ export default {
 
 	div:nth-child(n + 1):not(:last-child)
 		margin-bottom: 20px
-
-
 
 </style>
