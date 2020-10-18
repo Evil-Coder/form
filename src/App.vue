@@ -5,9 +5,9 @@
 			<Main :send="send" ref="Main"/>
 			<Address :send="send" ref="Address"/>
 			<Passport :send="send" ref="Passport"/>
+			<h2 class="account-create__successful" v-show="accept">Аккаунт успешно создан</h2>
 			<button @click.prevent="sending" class="account-create__send">Создать аккаунт</button>
 		</form >
-		<h2 class="account-create__successful" v-if="accept">Аккаунт успешно создан</h2>
   </div>
 </template>
 
@@ -88,10 +88,11 @@ body
 		margin: 0 auto
 
 	&__successful
+		grid-column: 1 / -1
 		text-align: center
+		background-color: #12a012
 		font-family: "Comic Sans", sans-serif
-		color: #00BA88
-		box-shadow: 0 0 40px 5px #00BA88
+		color: white
 
 
 </style>

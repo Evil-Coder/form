@@ -39,7 +39,7 @@
 		</div>
 		<div class="address__house field"
 				 :class="{'field_valid' : $v.house.$model, 'field_invalid' : $v.house.$error}">
-			<input type="text"  id="house" class="field" v-model.trim="$v.house.$model">
+			<input type="number"  id="house" class="field" v-model.trim="$v.house.$model">
 			<label for="house">Дом</label>
 
 			<p class="field__error" v-if="$v.house.$error">Пожалуйста напишите дом корректно</p>
