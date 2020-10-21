@@ -97,7 +97,6 @@ export default {
 		return {
 			showTherapist: false,
 			showClientGroup: false,
-
 			surname: '',
 			name: '',
 			middleName: '',
